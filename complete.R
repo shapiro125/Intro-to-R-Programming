@@ -1,7 +1,6 @@
 complete <- function(directory, id = 1:332) {
   
-  file_list <- list.files(directory, full.names = TRUE)
-  file_list <- file_list[grepl(".csv",file_list)]
+  file_list <- list.files(directory, pattern="*.csv", full.names = TRUE)
   file_list <- do.call(rbind, lapply(file_list, read.csv, header = TRUE))
 
   list_subset <- file_list[which(file_list[, "ID"] %in% id),]
